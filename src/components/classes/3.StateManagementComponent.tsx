@@ -2,8 +2,8 @@
 // CSS intergration
 
 import { useState } from 'react';
-import { Fruits } from '../utils/data';
-import './State.css';
+import { Fruits } from '../../utils/data';
+import './../State.css';
 
 export const StateManagementComponent = () => {
   const [selectedIndex, setSelectedIndex] = useState(-1);

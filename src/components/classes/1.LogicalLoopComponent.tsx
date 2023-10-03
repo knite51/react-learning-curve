@@ -2,7 +2,7 @@
 // Conditional Statments with JSX
 // Loop Statements with JSX
 
-import { Fruits } from '../utils/data';
+import { Fruits } from '../../utils/data';
 
 export const LogicalLoopComponent = () => {
   const fruits: string[] = Fruits;
@@ -39,7 +39,6 @@ export const LogicalLoopComponent = () => {
               ))}
             </ul>
           </div>
-          <div className="col-md-12"></div>
         </div>
       </div>
     </>
