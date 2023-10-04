@@ -1,5 +1,6 @@
 import { Exercise } from '../../interface/interface';
 import ButtonComponent from './1.ButtonComponent';
+import ShowAlert from './2.ShowAlert';
 
 const Exercises = ({ btnName, mode, onToggleMode }: Exercise) => {
   return (
@@ -17,6 +18,7 @@ const Exercises = ({ btnName, mode, onToggleMode }: Exercise) => {
       {mode && (
         <div className="row mt-3">
           <ButtonComponent></ButtonComponent>
+          <ShowAlert></ShowAlert>
         </div>
       )}
     </>
