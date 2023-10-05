@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { Fruits } from '../../../utils/data';
-import './../../State.css';
+import './State.css';
 
 export const StateManagementComponent = () => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
