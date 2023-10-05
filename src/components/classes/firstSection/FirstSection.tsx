@@ -6,10 +6,12 @@ import PassChildrenComponent from './6.PassingChildrenComponent';
 import { Fruits } from '../../../utils/data';
 
 const FirstSection = () => {
-      const fruits: string[] = Fruits;
+  const fruits: string[] = Fruits;
   return (
     <>
       <div className="row mt-3">
+        <hr />
+        <h4 className="mb-3">Section One</h4>
         <LogicalLoopComponent></LogicalLoopComponent>
         <EventsComponent></EventsComponent>
         <StateManagementComponent></StateManagementComponent>

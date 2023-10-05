@@ -4,8 +4,8 @@ import SecondSection from './secondSection/SecondSection';
 const Lessons = () => {
   return (
     <>
-      <FirstSection></FirstSection>
       <SecondSection></SecondSection>
+      <FirstSection></FirstSection>
     </>
   );
 };
