@@ -1,10 +1,11 @@
-import { Btns } from '../../utils/data';
+import { Btns } from '../../../utils/data';
+import ReusableCol from '../../classes/firstSection/ReusableCol';
 
 const ButtonComponent = () => {
   const btns: string[] = Btns;
   return (
     <>
-      <div className="col-md-3">
+      <ReusableCol>
         {btns.map((btn) => (
           <button
             type="button"
@@ -14,7 +15,7 @@ const ButtonComponent = () => {
             {btn}
           </button>
         ))}
-      </div>
+      </ReusableCol>
     </>
   );
 };

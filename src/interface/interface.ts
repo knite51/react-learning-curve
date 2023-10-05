@@ -12,9 +12,3 @@ export interface PropsChildrenData {
     title: string;
     children: ReactNode
 }
-
-export interface Exercise {
-    btnName: string,
-    mode: boolean,
-    onToggleMode: (status: boolean) => void
-}

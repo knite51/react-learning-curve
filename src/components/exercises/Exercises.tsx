@@ -1,26 +1,11 @@
-import { Exercise } from '../../interface/interface';
-import ButtonComponent from './1.ButtonComponent';
-import ShowAlert from './2.ShowAlert';
+import FirstSectionEx from './firstSection/FirstSectionEx';
+import { SecondSectionEx } from './secondSection/SecondSectionEx';
 
-const Exercises = ({ btnName, mode, onToggleMode }: Exercise) => {
+const Exercises = () => {
   return (
     <>
-      <div className="row justify-content-center">
-        <button
-          type="button"
-          className={'btn col-2 btn-' + (mode ? 'danger' : 'primary')}
-          onClick={() => onToggleMode(!mode)}
-        >
-          {btnName} Exercise
-        </button>
-      </div>
-
-      {mode && (
-        <div className="row mt-3">
-          <ButtonComponent></ButtonComponent>
-          <ShowAlert></ShowAlert>
-        </div>
-      )}
+      <SecondSectionEx></SecondSectionEx>
+      <FirstSectionEx></FirstSectionEx>
     </>
   );
 };

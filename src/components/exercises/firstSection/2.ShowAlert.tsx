@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import ReusableCol from '../../classes/firstSection/ReusableCol';
 
 const ShowAlert = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   return (
-    <div className="col-md-3">
+    <ReusableCol>
       {showAlert && (
         <div className="alert alert-primary  alert-dismissible" role="alert">
           A simple primary alert—check it out!
@@ -24,7 +25,7 @@ const ShowAlert = () => {
       >
         Show Alert
       </button>
-    </div>
+    </ReusableCol>
   );
 };
 
