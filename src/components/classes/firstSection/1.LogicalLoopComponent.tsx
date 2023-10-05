@@ -2,7 +2,7 @@
 // Conditional Statments with JSX
 // Loop Statements with JSX
 
-import { Fruits } from '../../utils/data';
+import { Fruits } from '../../../utils/data';
 
 export const LogicalLoopComponent = () => {
   const fruits: string[] = Fruits;

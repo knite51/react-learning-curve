@@ -1,6 +1,6 @@
 // Using Props to pass children into component
 
-import { PropsChildrenData } from '../../interface/interface';
+import { PropsChildrenData } from '../../../interface/interface';
 
 const PassChildrenComponent = ({ title, children }: PropsChildrenData) => {
   return (

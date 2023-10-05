@@ -1,6 +1,6 @@
 // Props (Parent to Child data)
 // Props Function (Child to parent data)
-import { PropsParentChildData } from '../../interface/interface';
+import { PropsParentChildData } from '../../../interface/interface';
 
 export const PropsChildComponent = ({
   title,

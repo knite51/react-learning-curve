@@ -1,6 +1,6 @@
 // Events with JSX
 
-import { Btns } from '../../utils/data';
+import { Btns } from '../../../utils/data';
 
 export const EventsComponent = () => {
   const btns: string[] = Btns;
