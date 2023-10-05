@@ -18,12 +18,13 @@ const Anchor = styled.a`
 `;
 
 // Styling based on props or state;
+// To prevent console error of passing a props on an HTML element, your naming convention for a styled component props should start with '$'
 interface Btn2Props {
-  setStyle: boolean;
+  $setStyle: boolean;
 }
 
 const Btn2 = styled.button<Btn2Props>`
-  background: ${(props) => (props.setStyle ? 'purple' : '#9f2d4c5e')};
+  background: ${(props) => (props.$setStyle ? 'purple' : '#9f2d4c5e')};
   color: white;
   padding: 2px 8px;
   border-radius: 4px;
@@ -43,7 +44,7 @@ const CssInJS = () => {
           </Btn>
         </ReusableCol>
         <ReusableCol colDigit="9">
-          <Btn2 className="btn mt-5" setStyle={styleState}>
+          <Btn2 className="mt-5" $setStyle={styleState}>
             CSSInJS Managed by State
           </Btn2>
         </ReusableCol>
