@@ -4,7 +4,7 @@ import Exercises from './components/exercises/Exercises';
 import Lessons from './components/classes/Classes';
 
 function App() {
-  const [exerciseMode, setExerciseMode] = useState(false);
+  const [exerciseMode, setExerciseMode] = useState(true);
   const [btnName, setBtnName] = useState('Activate');
   const handleSetExerciseMode = (mode: boolean) => {
     setExerciseMode(!mode);

@@ -12,3 +12,8 @@ export interface PropsChildrenData {
     title: string;
     children: ReactNode
 }
+
+export interface Cart {
+    addCart: (item: string) => void;
+    removeCart: (item: string) => void;
+}
