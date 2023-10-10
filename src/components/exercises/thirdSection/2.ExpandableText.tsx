@@ -6,8 +6,10 @@ interface ExpandableTextProps {
 }
 
 const ExpandableText = ({ maxChar = 100, children }: ExpandableTextProps) => {
-  if (children.length <= maxChar) return children;
   const [isExpanded, setIsExpanded] = useState(false);
+
+  if (children.length <= maxChar) return children;
+
   const stipped = !isExpanded
     ? children.substring(0, maxChar) + '...'
     : children;
