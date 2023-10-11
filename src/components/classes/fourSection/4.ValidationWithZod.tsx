@@ -18,7 +18,7 @@ const ValidationWithZod = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => console.log(data);
@@ -54,7 +54,7 @@ const ValidationWithZod = () => {
             />
             {errors.age && <p className="text-danger">{errors.age.message} </p>}
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary" disabled={!isValid}>
             Submit
           </button>
         </form>

@@ -17,3 +17,9 @@ export interface Cart {
     addCart: (item: string) => void;
     removeCart: (item: string) => void;
 }
+
+export interface FormDataInterface {
+    description: string;
+    amount: number;
+    category: string;
+}

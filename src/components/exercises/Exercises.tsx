@@ -1,5 +1,5 @@
 import FirstSectionEx from './firstSection/FirstSectionEx';
-import FourthSectionex from './fourthSection/FourthSectionex';
+import FourthSectionex from './fourthSection/FourthSectionEx';
 import { SecondSectionEx } from './secondSection/SecondSectionEx';
 import ThirdSectionEx from './thirdSection/ThirdSectionEx';
 
