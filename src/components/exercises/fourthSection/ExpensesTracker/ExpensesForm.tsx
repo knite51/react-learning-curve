@@ -2,6 +2,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormDataInterface } from '../../../../interface/interface';
+import { categories } from './categories';
 
 interface FormProps {
   onFormSubmit: (data: FormDataInterface) => void;
@@ -12,19 +13,27 @@ const schema = z.object({
     .string()
     .min(3, { message: 'Description should be atleast 3 characters' }),
   amount: z.number({ invalid_type_error: 'Number value is required' }),
-  category: z.string().min(3, { message: 'Category is required' }),
+  category: z.enum(categories, {
+    errorMap: () => ({ message: 'Category is required' }),
+  }),
 });
 
 const ExpensesForm = ({ onFormSubmit }: FormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    reset,
+    formState: { errors },
   } = useForm<FormDataInterface>({ resolver: zodResolver(schema) });
 
   return (
     <>
-      <form onSubmit={handleSubmit(onFormSubmit)}>
+      <form
+        onSubmit={handleSubmit((data) => {
+          onFormSubmit(data);
+          reset();
+        })}
+      >
         <div className="mb-3">
           <label htmlFor="description" className="form-label">
             Description
@@ -64,9 +73,9 @@ const ExpensesForm = ({ onFormSubmit }: FormProps) => {
             className="form-select"
           >
             <option value="">All categories</option>
-            <option value="Groceries">Groceries</option>
-            <option value="Utilities">Utilities</option>
-            <option value="Entertainment">Entertainment</option>
+            {categories.map((cat) => (
+              <option key={cat}>{cat}</option>
+            ))}
           </select>
           {errors.category && (
             <p className="text-danger">{errors.category.message} </p>

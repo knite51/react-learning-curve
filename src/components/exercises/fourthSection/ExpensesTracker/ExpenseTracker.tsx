@@ -7,54 +7,25 @@ import ExpenseFilter from './ExpenseFilter';
 
 const ExpenseTracker = () => {
   const [formData, setFormData] = useState<FormDataInterface[]>([]);
-  const [formDataFiltered, setFormDataFiltered] = useState<FormDataInterface[]>(
-    []
-  );
   const [filteredWord, setFilteredWord] = useState<string | undefined>();
-  const [tableTotal, setTableTotal] = useState<number>(0);
 
   const handleAddExpense = (data: FormDataInterface) => {
-    const newData = [...formData, data];
-    handleSetFormData(newData);
+    setFormData([...formData, data]);
   };
 
   const handleRemoveExpense = (itemIndex: number) => {
-    const newData = formData.filter((el, index) => index !== itemIndex);
-    handleSetFormData(newData);
+    setFormData(formData.filter((el, index) => index !== itemIndex));
   };
 
   const handleFilter = (filteredWord: RefObject<HTMLSelectElement>) => {
-    const filterRef = filteredWord.current?.value;
-    handleSetFilteredWord(filterRef);
-    handleFilteringLogic(filterRef);
+    setFilteredWord(filteredWord.current?.value);
   };
 
-  const handleFilteringLogic = (word = filteredWord, data = formData) => {
-    if (word) {
-      const newData = data.filter(
-        (el) => el.category.toLowerCase() === word?.toLowerCase()
-      );
-      handleSetFormData(newData, 'filtering');
-    } else {
-      handleSetFormData(formData, 'filtering');
-    }
-  };
-
-  const handleCalculateTotal = (latestFormData: FormDataInterface[]) => {
-    setTableTotal(latestFormData.reduce((acc, curr) => acc + curr.amount, 0));
-  };
-
-  const handleSetFormData = (newData: FormDataInterface[], action = 'none') => {
-    if (action == 'none') {
-      setFormData(newData);
-    }
-    setFormDataFiltered(newData);
-    handleCalculateTotal(newData);
-  };
-
-  const handleSetFilteredWord = (filteredWord: string | undefined) => {
-    setFilteredWord(filteredWord);
-  };
+  const filtedFormData = filteredWord
+    ? formData.filter(
+        (el) => el.category.toLowerCase() === filteredWord?.toLowerCase()
+      )
+    : formData;
 
   return (
     <>
@@ -64,8 +35,7 @@ const ExpenseTracker = () => {
       <ReusableCol colDigit="4">
         <ExpenseFilter onFilter={handleFilter}></ExpenseFilter>
         <ExpensesTable
-          tableItems={formDataFiltered}
-          tableItemsTotal={tableTotal}
+          tableItems={filtedFormData}
           onExpenseDeletion={handleRemoveExpense}
         ></ExpensesTable>
       </ReusableCol>

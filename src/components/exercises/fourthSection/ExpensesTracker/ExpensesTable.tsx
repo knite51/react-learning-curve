@@ -2,15 +2,14 @@ import { FormDataInterface } from '../../../../interface/interface';
 
 interface ExpenseTableProps {
   tableItems: FormDataInterface[];
-  tableItemsTotal: number;
   onExpenseDeletion: (itemIndex: number) => void;
 }
 
 const ExpensesTable = ({
   tableItems,
-  tableItemsTotal = 0,
   onExpenseDeletion,
 }: ExpenseTableProps) => {
+  if (tableItems.length === 0) return null;
   return (
     <>
       <table className="table table-bordered">
@@ -41,7 +40,12 @@ const ExpensesTable = ({
           ))}
           <tr>
             <th>Total</th>
-            <td>${tableItemsTotal.toFixed(2)}</td>
+            <td>
+              $
+              {tableItems
+                .reduce((acc, curr) => acc + curr.amount, 0)
+                .toFixed(2)}
+            </td>
           </tr>
         </tbody>
       </table>

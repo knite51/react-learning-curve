@@ -1,4 +1,5 @@
 import { RefObject, useRef } from 'react';
+import { categories } from './categories';
 
 interface ExpenseFilterProps {
   onFilter: (filteredWord: RefObject<HTMLSelectElement>) => void;
@@ -17,9 +18,9 @@ const ExpenseFilter = ({ onFilter }: ExpenseFilterProps) => {
         onChange={() => onFilter(filterRef)}
       >
         <option value="">All categories</option>
-        <option value="Groceries">Groceries</option>
-        <option value="Utilities">Utilities</option>
-        <option value="Entertainment">Entertainment</option>
+        {categories.map((cat) => (
+          <option key={cat}>{cat}</option>
+        ))}
       </select>
     </>
   );
