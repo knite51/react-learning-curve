@@ -12,7 +12,7 @@ const Modulization = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    const { request, cancel } = userService.getAllUser();
+    const { request, cancel } = userService.getAll<User>();
     request
       .then((res) => {
         setUsers(res.data);
@@ -29,7 +29,7 @@ const Modulization = () => {
   const handleDelete = (id: string) => {
     const originalUsers = [...users];
     setUsers(users.filter((user) => user.id !== id));
-    userService.deleteUser(id).catch((err) => {
+    userService.delete(id).catch((err) => {
       if (err instanceof CanceledError) return;
       setError(err.message);
       setUsers(originalUsers);
@@ -42,7 +42,7 @@ const Modulization = () => {
     const newUser = { id: '0', name: 'Ayo' };
     setUsers([newUser, ...users]);
     userService
-      .createUser(newUser)
+      .create<User>(newUser)
       .then((response) => {
         setUsers([response.data, ...users]);
       })
@@ -57,7 +57,7 @@ const Modulization = () => {
     setUsers(
       users.map((user) => (user.id === updatedUser.id ? updatedUser : user))
     );
-    userService.updateUser(user.id, updatedUser).catch((err) => {
+    userService.update<User>(updatedUser).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
     });
