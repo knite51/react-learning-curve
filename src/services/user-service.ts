@@ -5,4 +5,4 @@ export interface User {
   name: string;
 }
 
-export default create('/users');
+export default create('/users/');
