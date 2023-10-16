@@ -1,30 +1,12 @@
 // Export functionality into seperate modules
-
-import { useEffect, useState } from 'react';
 import ReusableCol from '../firstSection/ReusableCol';
 import { CanceledError } from '../../../services/api-client';
 import userService, { User } from '../../../services/user-service';
+import useUser from '../../../hooks/useUsers';
 
 const Modulization = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [error, setError] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    const { request, cancel } = userService.getAll<User>();
-    request
-      .then((res) => {
-        setUsers(res.data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setIsLoading(false);
-      });
-    return () => cancel();
-  }, []);
+  const { users, error, isLoading, setUsers, setError, setIsLoading } =
+    useUser();
 
   const handleDelete = (id: string) => {
     const originalUsers = [...users];
