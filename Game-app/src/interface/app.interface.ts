@@ -18,3 +18,14 @@ export interface GamesResponse {
     count: number;
     results: Game[];
 }
+
+export interface Genre {
+    id: number;
+    name: string;
+    slug: string;
+}
+
+export interface GenreResponse {
+    count: number;
+    results: Genre[];
+}
