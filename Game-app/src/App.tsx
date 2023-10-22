@@ -5,8 +5,8 @@ import GameGrid from './components/game-main/GameGrid';
 import GenreList from './components/game-sidebar/GenreList';
 import { useState } from 'react';
 import { GameQuery } from './interface/app.interface';
-import PlatformSelector from './components/game-main/filter-sort/PlatformSelector';
-import SortSelector from './components/game-main/filter-sort/SortSelector';
+import PlatformSelector from './components/game-main/filter-sort-search/PlatformSelector';
+import SortSelector from './components/game-main/filter-sort-search/SortSelector';
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -37,7 +37,12 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <HStack spacing={'16px'} paddingLeft={2} marginBottom={5}>
+          <HStack
+            spacing={'16px'}
+            paddingLeft={2}
+            marginBottom={5}
+            flexWrap="wrap"
+          >
             <PlatformSelector
               onSelectPlatform={(platform) =>
                 setGameQuery({ ...gameQuery, platform: platform })
