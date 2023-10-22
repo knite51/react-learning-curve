@@ -51,11 +51,7 @@ function App() {
               selectedSort={gameQuery.sort}
             ></SortSelector>
           </HStack>
-          <GameGrid
-            selectedGenre={gameQuery.genre}
-            selectedPlatform={gameQuery.platform}
-            selectedSort={gameQuery.sort}
-          ></GameGrid>
+          <GameGrid gameQuery={gameQuery}></GameGrid>
         </GridItem>
       </Grid>
     </>
