@@ -11,3 +11,9 @@ export interface Post {
     body: string;
     userId: number;
 }
+
+
+export interface PostQuery {
+    page: number;
+    pageSize: number
+}
