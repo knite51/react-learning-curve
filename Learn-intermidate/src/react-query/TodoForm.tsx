@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { FormEvent, useRef } from 'react';
 import { Todo } from '../app.interface';
 import axios from 'axios';
+import { CACHE_KEY_TODOS } from './constants';
 
 const TodoForm = () => {
   const queryClient = useQueryClient();
@@ -21,7 +22,7 @@ const TodoForm = () => {
       // });
 
       // Approach Two Updating the data in cache
-      queryClient.setQueryData<Todo[]>(['todos'], (todos) => [
+      queryClient.setQueryData<Todo[]>(CACHE_KEY_TODOS, (todos) => [
         savedTodo,
         ...(todos || []),
       ]);

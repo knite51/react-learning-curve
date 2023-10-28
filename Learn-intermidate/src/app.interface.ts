@@ -17,3 +17,7 @@ export interface PostQuery {
     page: number;
     pageSize: number
 }
+
+export interface AddTodoContext {
+    prevTodos: Todo[];
+}
