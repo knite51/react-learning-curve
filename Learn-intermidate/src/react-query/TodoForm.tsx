@@ -6,7 +6,9 @@ import axios from 'axios';
 const TodoForm = () => {
   const queryClient = useQueryClient();
 
-  const addTodo = useMutation({
+  const addTodo = useMutation<Todo, Error, Todo>({
+    //Types are 1 from backend, 2 error type, 3 data sent to backend
+    //
     mutationFn: (todo: Todo) =>
       axios
         .post<Todo>('https://jsonplaceholder.typicode.com/todos', todo)
@@ -40,17 +42,22 @@ const TodoForm = () => {
   };
 
   return (
-    <form
-      className="row mb-3"
-      onSubmit={(event) => handleAddTodoMutation(event)}
-    >
-      <div className="col">
-        <input ref={ref} type="text" className="form-control" />
-      </div>
-      <div className="col">
-        <button className="btn btn-primary">Add</button>
-      </div>
-    </form>
+    <>
+      {addTodo.error && (
+        <div className="alert alert-danger">{addTodo.error.message}</div>
+      )}
+      <form
+        className="row mb-3"
+        onSubmit={(event) => handleAddTodoMutation(event)}
+      >
+        <div className="col">
+          <input ref={ref} type="text" className="form-control" />
+        </div>
+        <div className="col">
+          <button className="btn btn-primary">Add</button>
+        </div>
+      </form>
+    </>
   );
 };
 
