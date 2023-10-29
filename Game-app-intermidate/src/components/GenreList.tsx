@@ -7,9 +7,10 @@ import {
   ListItem,
   Spinner,
   Text,
-} from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
-import getCroppedImageUrl from "../services/image-url";
+} from '@chakra-ui/react';
+import useGenres from '../hooks/useGenres';
+import getCroppedImageUrl from '../services/image-url';
+import { Genre } from '../interface/api-interface';
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
@@ -29,7 +30,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
         Genres
       </Heading>
       <List>
-        {data.map((genre) => (
+        {data.results.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
             <HStack>
               <Image
@@ -41,7 +42,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
               <Button
                 whiteSpace="normal"
                 textAlign="left"
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
                 onClick={() => onSelectGenre(genre)}
                 fontSize="md"
                 variant="link"
