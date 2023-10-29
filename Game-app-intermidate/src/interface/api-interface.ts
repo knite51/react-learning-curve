@@ -22,4 +22,5 @@ export interface Game {
 export interface GenericResponse<T> {
     count: number;
     results: T[];
+    next: string | null;
 }
