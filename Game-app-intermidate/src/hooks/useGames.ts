@@ -8,11 +8,11 @@ import gameService from "../services/gameService";
 
 const useGames = (gameQuery: GameQuery) =>
   useInfiniteQuery<GenericResponse<Game>, Error>({
-    queryKey: [...CACHE_KEY_GAMES, gameQuery.genre?.name, gameQuery.platform?.name, gameQuery.sortOrder, gameQuery.searchText],
+    queryKey: [...CACHE_KEY_GAMES, gameQuery],
     queryFn: ({ pageParam = 1 }) => gameService.getAll({
       params: {
-        genres: gameQuery.genre?.id,
-        parent_platforms: gameQuery.platform?.id,
+        genres: gameQuery.genreID,
+        parent_platforms: gameQuery.platformID,
         ordering: gameQuery.sortOrder,
         search: gameQuery.searchText,
         page: pageParam,

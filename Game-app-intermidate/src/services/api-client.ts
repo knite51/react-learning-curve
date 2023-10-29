@@ -17,6 +17,11 @@ class APIClient<T> {
   getAll = (config: AxiosRequestConfig) => {
     return axiosInstance.get<GenericResponse<T>>(this.endpoint, config).then(res => res.data);
   }
+
+  getByID = (id?: number) => {
+    const endpoint = id ? `${this.endpoint}/${id}` : this.endpoint
+    return axiosInstance.get<T>(endpoint).then(res => res.data);
+  }
 }
 
 export default APIClient;
