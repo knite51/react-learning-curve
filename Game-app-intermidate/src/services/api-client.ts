@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { GenericResponse } from "../interface/api-interface";
 
 export const axiosInstance = axios.create({
@@ -14,17 +14,8 @@ class APIClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = () => {
-    return axiosInstance.get<GenericResponse<T>>(this.endpoint).then(res => res.data);
-  }
-
-  getAllWithParams = (params: {
-    genres: number | undefined,
-    parent_platforms: number | undefined,
-    ordering: string,
-    search: string
-  }) => {
-    return axiosInstance.get<GenericResponse<T>>(this.endpoint, { params }).then(res => res.data);
+  getAll = (config: AxiosRequestConfig) => {
+    return axiosInstance.get<GenericResponse<T>>(this.endpoint, config).then(res => res.data);
   }
 }
 
