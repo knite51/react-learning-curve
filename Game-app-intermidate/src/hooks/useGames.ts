@@ -3,6 +3,7 @@ import { GameQuery } from "../App";
 import { Game, GenericResponse } from "../interface/api-interface";
 import { CACHE_KEY_GAMES } from "../services/constants";
 import gameService from "../services/gameService";
+import ms from 'ms'
 
 
 
@@ -19,7 +20,7 @@ const useGames = (gameQuery: GameQuery) =>
         pageSize: gameQuery.pageSize
       }
     }),
-    staleTime: 1 * 10 * 60 * 1000,//10mins
+    staleTime: ms('24h'),
     keepPreviousData: true,
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined
