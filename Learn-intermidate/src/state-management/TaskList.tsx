@@ -1,16 +1,19 @@
-import { useReducer } from 'react';
-import taskReducer from './reducers/taskReducer';
+import { useContext } from 'react';
+import TasksContext from './contexts/tasksContext';
+import AuthContext from './contexts/authContext';
 
-interface Task {
+export interface Task {
   id: number;
   title: string;
 }
 
 const TaskList = () => {
-  const [tasks, dispatch] = useReducer(taskReducer, []);
+  const { tasks, dispatch } = useContext(TasksContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <>
+      {user && <p>User:{user} </p>}
       <button
         onClick={() =>
           dispatch({
