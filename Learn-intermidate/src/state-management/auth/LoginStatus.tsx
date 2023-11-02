@@ -1,5 +1,7 @@
 import useAuthStore from './authStore';
 
+// AuthCOntext, authHook, AuthProvider are no longer needed since we are managing  the state with zustand
+
 const LoginStatus = () => {
   const { username, login, logout } = useAuthStore();
 
