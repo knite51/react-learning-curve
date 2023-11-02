@@ -9,3 +9,5 @@ const counterReducer = (state: number, action: Action): number => {
 };
 
 export default counterReducer;
+
+// No longer needed since we using a state managment tool Zustand
