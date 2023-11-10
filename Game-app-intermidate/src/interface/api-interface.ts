@@ -19,6 +19,13 @@ export interface Game {
   rating_top: number;
   slug: string;
   description_raw: string;
+  genres: Genre[];
+  publishers: Publisher[];
+}
+
+export interface Publisher {
+  id: number;
+  name: string;
 }
 
 export interface GenericResponse<T> {
