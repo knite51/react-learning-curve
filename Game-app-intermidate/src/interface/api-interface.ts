@@ -37,6 +37,13 @@ export interface Trailer {
     max: string;
   };
 }
+
+export interface Screenshot {
+  id: number;
+  image: string;
+  width: number;
+  height: number;
+}
 export interface GenericResponse<T> {
   count: number;
   results: T[];
