@@ -28,6 +28,15 @@ export interface Publisher {
   name: string;
 }
 
+export interface Trailer {
+  id: number;
+  name: string;
+  preview: string;
+  data: {
+    480: string;
+    max: string;
+  };
+}
 export interface GenericResponse<T> {
   count: number;
   results: T[];
